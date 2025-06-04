@@ -23,6 +23,7 @@ nanobot = NanoBot(nanobot_laser_group)
 nanobot_group.add(nanobot)
 
 bacteria_group = pygame.sprite.Group()
+bacteria_laser_group=pygame.sprite.Group()
 
 num_rows = 5
 num_cols = 11
@@ -36,7 +37,7 @@ for row in range(num_rows):
         x = start_x + col * spacing_x
         y = start_y + row * spacing_y
         # Provide velocity (e.g., 2) and bullet_group (nanobot_laser_group)
-        bacteria = Bacteria(x, y, 2, nanobot_laser_group)
+        bacteria = Bacteria(x, y, 2, bacteria_laser_group)
         bacteria_group.add(bacteria)
 
 
@@ -57,6 +58,14 @@ while running:
 
     nanobot_laser_group.update()
     nanobot_laser_group.draw(screen)
+
+     
+    bacteria_group.update()
+    bacteria_group.draw(screen)
+
+    
+    bacteria_laser_group.update()
+    bacteria_laser_group.draw(screen)
     
     bacteria_group.update()
     bacteria_group.draw(screen)
